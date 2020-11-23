@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Data
 {
-	class Machines
+	public class Machine
 	{
+		public int Id { get; set; }
+		public string  Image { get; set; }
+		public int WoodmakerId { get; set; }
+		public string State { get; set; }
 	}
 }
