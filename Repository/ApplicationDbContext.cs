@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Repository
 {
 	public class ApplicationDbContext:IdentityDbContext
@@ -19,6 +20,7 @@ namespace Repository
 		{
 			optionsBuilder
 			   .UseSqlServer("Server=DESKTOP-MGT344C; Database=Woodworking; Trusted_Connection=True; MultipleActiveResultSets=true");
+			
 		}
 
 
