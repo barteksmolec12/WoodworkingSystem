@@ -26,7 +26,8 @@ namespace Repository
 
 			}
 			_set.Add(entity);
-			
+			_context.SaveChanges();
+
 		}
 
 		public void Delete(T entity)
@@ -38,7 +39,8 @@ namespace Repository
 			}
 			
 			_set.Remove(entity);
-			
+			_context.SaveChanges();
+
 		}
 
 		public void Delete(int id)
@@ -51,7 +53,8 @@ namespace Repository
 			var x = _set.SingleOrDefault(x => x.Id == id);
 
 			_set.Remove(x);
-	
+			_context.SaveChanges();
+
 		}
 
 		public T Get(int id)
