@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Data
 {
-	public class Category:BaseEntity
+	public class BaseEntity
 	{
-
-		[Required]
-		public string Name { get; set; }
+		[Key]
+		public int Id { get; set; }
 	}
 }

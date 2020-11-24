@@ -6,10 +6,9 @@ using System.Text;
 
 namespace Data
 {
-	public class ShoppingCartClient
+	public class ShoppingCartClient:BaseEntity
 	{
-		[Key]
-		public int Id { get; set; }
+		
 		public int UserId { get; set; }
 		public int ProducDetailsId { get; set; }
 		[ForeignKey("ProducDetailsId")]

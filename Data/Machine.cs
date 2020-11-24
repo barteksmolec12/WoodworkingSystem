@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Data
 {
-	public class Machine
+	public class Machine:BaseEntity
 	{
-		public int Id { get; set; }
+		
 		public string  Image { get; set; }
 		public int WoodmakerId { get; set; }
 		public string State { get; set; }

@@ -6,10 +6,9 @@ using System.Text;
 
 namespace Data
 {
-	public class JoineryOrderDetails
+	public class JoineryOrderDetails:BaseEntity
 	{
-		[Key]
-		public int Id { get; set; }
+	
 		[Required]
 		public int JoineryOrderId { get; set; }
 		[ForeignKey("JoineryOrderId")]

@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Data
 {
-	public class Woodmaker
+	public class Woodmaker:BaseEntity
 	{
-		[Key]
-		public int Id { get; set; }
+		
 		public string FirstName { get; set; }
 		public string SecondName { get; set; }
 	}
