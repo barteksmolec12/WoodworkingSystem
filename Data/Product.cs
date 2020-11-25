@@ -12,7 +12,7 @@ namespace Data
 		[Required]
 		public string ProductName { get; set; }
 		[Required]
-		public string CategoryId  { get; set; }
+		public int CategoryId  { get; set; }
 		[ForeignKey("CategoryId")]
 		public virtual Category Category { get; set; }
 		public string  Description { get; set; }
