@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{24259CC3-2E55-4DF7-9271-8CFC597C7BFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoodWorkingUI", "WoodWorkingUI\WoodWorkingUI.csproj", "{A159615B-440A-452F-B3CE-8E3DA35C2C73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoodWorkingUI", "WoodWorkingUI\WoodWorkingUI.csproj", "{A159615B-440A-452F-B3CE-8E3DA35C2C73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
