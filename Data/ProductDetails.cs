@@ -17,6 +17,7 @@ namespace Data
 		public string Color { get; set; }
 		public string ColorLegs { get; set; }
 		public enum EColors { Bezbarwny = 0, Biały = 1, Czarny =2}
+		
 		public int Height { get; set; }
 		public int Width { get; set; }
 		public int Count { get; set; }
