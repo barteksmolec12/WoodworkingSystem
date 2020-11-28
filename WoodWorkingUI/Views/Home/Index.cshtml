@@ -3,59 +3,19 @@
 }
 <head>
 
-    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/css_MainPage/MainPage.css" rel="stylesheet" />
 </head>
-<style>
-    #wrapper
-    {
-        margin-top:15%;
-    }
-    #outer {
-        width: 85%; /* demo*/
-        margin: auto; /* demo*/
-        display: flex;
-        flex-wrap: wrap;
-    }
 
-        #outer > div {
-            flex: 1;
-            padding: 2%;
-            cursor:pointer;
-        }
-            #outer > div > img {
-                width: 100%;
-                min-width: 200px; /* demo*/
-                height: 100%;
-                
-         /*       z-index: 100;
-                animation: scale 0.4s linear;
-                animation-fill-mode: forwards;
-                transform-origin: 50% 50%;*/
-                border:4px solid white;
-                border-radius:30px;
-            }
-
-          
-</style>
 
 <div id="wrapper">
     <div id="outer">
         
             <div class="itemwrapper">
-                <img src="/ClientArea.jpg" alt="bag" />
+                <a> <img src="/imagesDev/ClientArea.jpg" alt="bag"/></a>
             </div>
        
-        <div class="itemwrapper">
-            <img src="/jobWindow.jpg" alt="pen" />
-        </div>
+            <div class="itemwrapper">
+                <a><img src="/imagesDev/jobWindow.jpg" alt="pen" /></a>
+            </div>
     </div>
 </div>
-
-
-
-
-    @*<div class="block b1"><a style="color:white;" asp-controller="Employee" asp-action="CreateNew">Dodaj pracownika</a></div>*@    @*<div class="block"><a style="color:white;" >STREFA KLIENTA - SKLEP</a></div>*@
- 
- 
-    @*Lista pracowników*@
-    @*utwórz nowy projekt*@
