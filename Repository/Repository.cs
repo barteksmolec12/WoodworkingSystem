@@ -1,5 +1,6 @@
 ﻿using Data;
 using Microsoft.EntityFrameworkCore;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Repository
 		}
 		public void Create(T entity)
 		{
-			if(entity==null)
+			if (entity == null)
 			{
 				throw new ArgumentNullException("entity");
 
@@ -37,7 +38,7 @@ namespace Repository
 				throw new ArgumentNullException("entity");
 
 			}
-			
+
 			_set.Remove(entity);
 			_context.SaveChanges();
 
@@ -45,7 +46,7 @@ namespace Repository
 
 		public void Delete(int id)
 		{
-			if(id == 0)
+			if (id == 0)
 			{
 				throw new ArgumentNullException("id");
 

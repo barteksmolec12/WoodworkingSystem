@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Repository
 {
-	public interface IRepository<T> where T:BaseEntity
-	{
+    public interface IRepository<T> where T : BaseEntity
+    {
         T Get(int id);
         IEnumerable<T> GetAll();
         void Update(T entity);
