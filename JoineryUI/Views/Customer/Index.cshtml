@@ -1,35 +1,30 @@
 ﻿
-@{
+@*@{
     ViewData["Title"] = "Index";
-}
+}*@
 <head>
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="/css/site.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
-<header style="max-width:100%;">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-hammer"></i>&nbsp;<strong>WoodWorking Shop</strong></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <partial name="_LoginPartial" />
-                <ul class="navbar-nav flex-grow-1">
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+
+<style>
+    #test:hover {
+        background-color: #D3D3D3;
+        color: black;
+        cursor: pointer;
+        transition-delay:0.1s;
+    }
+</style>
+<div><partial name="_HeaderForCustomerArea.cshtml" /></div>
+
 @*///////////////////////////// kategorie ////////// justify-content: center;display: flex;///////////////////////////////////////*@
 <div style="justify-content: center; display: flex;">
     <ul id="menu-filters" style="width:100%; " class="menu-filter-list list-inline text-center">
 
 
-        <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Wszystko</li>
+        <li style="padding-left:2%;padding-right:2%;margin-top:1%;" id="test" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Wszystko</li>
         <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Stoły</li>
         <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Drzwi wewnętrzne</li>
         <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Drzwi zewnętrzne</li>
@@ -72,7 +67,7 @@
             </div>
             <div class="col-md-3 col-sm-12 offset-md-9 text-center">
 
-                <a class="btn btn-success form-control" style="color: white; font-family: Arial">Szczegóły</a>
+                <a asp-controller="Customer" asp-action="Details" class="btn btn-success form-control" style="color: white; font-family: Arial">Szczegóły</a>
 
             </div>
         </div>
