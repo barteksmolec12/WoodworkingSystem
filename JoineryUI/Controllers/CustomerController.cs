@@ -12,5 +12,10 @@ namespace JoineryUI.Controllers
 		{
 			return View();
 		}
+		public IActionResult Details()
+		{
+			return View();
+		}
+
 	}
 }
