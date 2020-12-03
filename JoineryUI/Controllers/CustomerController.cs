@@ -16,6 +16,10 @@ namespace JoineryUI.Controllers
 		{
 			return View();
 		}
+		public IActionResult ShoppingCart()
+		{
+			return View();
+		}
 
 	}
 }
