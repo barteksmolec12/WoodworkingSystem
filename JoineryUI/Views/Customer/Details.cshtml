@@ -3,5 +3,98 @@
     ViewData["Title"] = "Details";
 }
 <div><partial name="_HeaderForCustomerArea.cshtml" /></div>
-<h1>Details</h1>
 
+<div class="col-12" style="">
+    <div class="row">
+        <div class="col-md-5 col-sm-12">
+            <img src="https://e-meblowy.pl/3529-large_default/stolik-kawowy-infinity-60x60.jpg" width="99%" style="border-radius:5px;border:2px solid #bbb9b9" />
+        </div>
+        <div class="col-md-7 col-sm-12">
+            <div class="row pr-3">
+                <div class="col-8">
+
+                    <h4 style="font-size:24px;color:darkslategrey"><strong>Galaxie Shhesam</strong></h4>
+
+                </div>
+
+                <div class="col-4 text-right" style="color:maroon">
+
+                    <h4 style="color:#97734F">5000 PLN</h4>
+
+                </div>
+            </div>
+
+
+            <div class="row col-12 text-justify d-none d-md-block">
+                <p>Gruby na prawie 4,5 centymetrów blat stołu wykonany jest z litego drewna Sheesham . Blat został dodatkowo polakierowany aby podkreślić industrialny charakter mebla. Podstawę stołu stanowią cztery krzyżowane ze sobą prawie czarne nogi przypominające litery X połączone ze sobą.</p>
+            </div>
+            <div class="col-md-10">
+
+                @*//////////////////////////////////////////////////////////////*@
+                <div class="form-group row">
+                    <div class="col-md-4" style="margin:auto;padd">
+                        <label><strong>Materiał</strong></label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control">
+                            <option>dąb</option>
+                            <option>sosna</option>
+                            <option>jesion</option>
+                            <option>orzech</option>
+                        </select>
+                    </div>
+                </div>
+                @*//////////////////////////////////////////////////////////////*@
+                <div class="form-group row">
+                    <div class="col-md-4" style="margin:auto;padd">
+                        <label><strong>Kolor</strong></label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control">
+                            <option>bezbarwny</option>
+                            <option>biały</option>
+                            <option>czarny</option>
+                        </select>
+                    </div>
+                </div>
+                @*//////////////////////////////////////////////////////////////*@
+                <div class="form-group row">
+                    <div class="col-md-4" style="margin:auto;padd">
+                        <label><strong>Długość</strong></label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control">
+                            <option>100 cm</option>
+                            <option>120 cm</option>
+                            <option>140 cm</option>
+                            <option>160 cm</option>
+                        </select>
+                    </div>
+                </div>
+                @*//////////////////////////////////////////////////////////////*@
+                <div class="form-group row">
+                    <div class="col-md-4" style="margin:auto;padd">
+                        <label><strong>Szerokość</strong></label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control">
+                            <option>40 cm</option>
+                            <option>60 cm</option>
+                            <option>80 cm</option>
+                            <option>100 cm</option>
+                        </select>
+                    </div>
+                </div>
+                @*//////////////////////////////////////////////////////////////*@
+              
+
+
+            </div>
+                <div class="row col-12" style="margin:auto;">
+
+                    <a asp-controller="Customer" asp-action="Details" class="btn btn-success form-control" style="color: white; font-family: Arial">Dodaj do koszyka</a>
+
+                </div>
+            </div>
+    </div>
+</div>
