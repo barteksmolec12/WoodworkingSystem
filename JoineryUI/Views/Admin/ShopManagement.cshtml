@@ -24,7 +24,7 @@
         border-radius: 10px;
         border: 1px solid #97734F;
     }
-    body {
+   
 
 </style>
 
@@ -120,44 +120,75 @@
     @*////////////////////////////////////////////////*@
 
 <h3 style="text-align:center;font-family:monospace;color:#97734F"><strong>Lista wszytskich produktów</strong></h3>
-    <table class="table table-striped border">
-        <tr class="table-secondary">
-            <th>
-                Test
-            </th>
-            <th>
-                Test
-            </th>
-            <th>
-                Test
-            </th>
-            <th>
-                Test
-            </th>
+<table class="table table-striped border">
+    <tr class="table-secondary">
 
-            <th></th>
-            <th></th>
-        </tr>
+        <th style="width:380px">
+            Nazwa produktu
+        </th>
+        <th>
+            Kategoria
+        </th>
+        <th>
+            Cena
+        </th>
+        <th>
 
-        <tr>
-            <td>
-                Test
-            </td>
-            <td>
-                Test
-            </td>
-            <td>
-                Test
-            </td>
-            <td>
-                Test
-            </td>
+        </th>
+     
 
-            <td>
-            </td>
-        </tr>
 
-    </table>
+
+    </tr>
+
+    <tr>
+        <td>
+            Galaxie Shhesam
+        </td>
+        <td>
+            Stoły
+        </td>
+        <td>
+            5000
+        </td>
+        <td>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+
+                <a class="btn btn-success text-white" asp-action="Details" asp-route-Id="@Model"><i class="fas fa-list-alt"></i></a>
+
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
+            </div>
+        </td>
+        
+
+
+    </tr>
+    <tr>
+        <td>
+            Modern z dostawką
+        </td>
+        <td>
+            Stoły
+        </td>
+        <td>
+            1200
+        </td>
+        <td style="width:150px">
+             <div class="btn-group" role="group">
+        <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+
+        <a class="btn btn-success text-white" asp-action="Details" asp-route-Id="@Model"><i class="fas fa-list-alt"></i></a>
+
+        <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt" ></i></a>
+    </div>
+        </td>
+        
+
+
+    </tr>
+
+</table>
 
     @*<h2>Filterable Table</h2>
         <p>Type something in the input field to search the table for first names, last names or emails:</p>
