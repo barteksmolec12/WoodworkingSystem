@@ -12,6 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository;
+using Data;
+using System.Data.SqlClient;
+using Service;
+using Service.Abstract;
 
 namespace JoineryUI
 {
@@ -20,6 +24,7 @@ namespace JoineryUI
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
+			
 		}
 
 		public IConfiguration Configuration { get; }
@@ -31,10 +36,15 @@ namespace JoineryUI
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
+
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			services.AddControllersWithViews();
-			services.AddRazorPages().AddRazorRuntimeCompilation(); 
+			services.AddRazorPages().AddRazorRuntimeCompilation();
+			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+			services.AddTransient<IProductService, ProductService>();
+
+
 
 		}
 

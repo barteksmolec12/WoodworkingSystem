@@ -3,6 +3,18 @@
     ViewData["Title"] = "ShopManagement";
     Layout = "~/Views/Shared/_LayoutAdminArea.cshtml";
 }
+<head>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</head>
 <style>
     .search-background {
         background: url('/images/dust_scratches.png')
@@ -24,102 +36,107 @@
         border-radius: 10px;
         border: 1px solid #97734F;
     }
-   
-
 </style>
 
-    
 
-    <form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
+    <br />
+    <div class="backgroundWhiteBorder col-md-8">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        @*//////////////   1   /////////////  *@
+        <h3 style="font-family: monospace;color:#97734F" class="text-center"><strong>Dodaj nowy produkt</strong></h3>
         <br />
-        <div class="backgroundWhiteBorder col-md-8">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
-            @*//////////////   1   /////////////  *@
-            <h3 style="font-family: monospace;color:#97734F" class="text-center"><strong>Dodaj nowy produkt</strong></h3>
-            <br />
-            <div class="form-group row ">
-                <div class="col-md-5">
-                    <div class="text-right">
-                        <label class="col-form-label">Nazwa produktu</label>
-                    </div>
+        <div class="form-group row ">
+            <div class="col-md-5">
+                <div class="text-right">
+                    <label class="col-form-label">Nazwa produktu</label>
+                </div>
 
-                </div>
-                <div class="col-md-5">
-                    <input class="form-control" />
-                </div>
-                @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
             </div>
-            <div class="form-group row ">
-                <div class="col-md-5">
-                    <div class="text-right">
-                        <label class="col-form-label">Kategoria</label>
-                    </div>
-
-                </div>
-                <div class="col-md-5">
-                    <input class="form-control" />
-                </div>
-                @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+            <div class="col-md-5">
+                <input class="form-control" />
             </div>
-
-
-            <div class="form-group row ">
-                <div class="col-md-5">
-                    <div class="text-right">
-                        <label class="col-form-label">Cena</label>
-                    </div>
-
+            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+        </div>
+        <div class="form-group row ">
+            <div class="col-md-5">
+                <div class="text-right">
+                    <label class="col-form-label">Kategoria</label>
                 </div>
-                <div class="col-md-5">
-                    <input class="form-control" />
-                </div>
-                @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+
             </div>
-
-
-            <div class="form-group row ">
-                <div class="col-md-5">
-                    <div class="text-right">
-                        <label class="col-form-label">Zdjęcie</label>
-                    </div>
-
-                </div>
-                <div class="col-md-5">
-                    <input type="file" name="files" multiple class="form-control" />
-                </div>
-                @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+            <div class="col-md-5">
+                <input class="form-control" />
             </div>
-           
-            <div class="form-group row ">
-                <div class="col-md-5">
-                    <div class="text-right">
-                        <label class="col-form-label">Opis szczegółowy</label>
-                    </div>
-
-                </div>
-                <div class="col-md-5">
-                    <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
-                </div>
-                @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
-            </div>
+            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
         </div>
 
 
-
-
-
-            @*<div class="form-group row">
-                <div class="col-5 offset-2">
-                    <partial name="_CreateAndBackToListButton" />
+        <div class="form-group row ">
+            <div class="col-md-5">
+                <div class="text-right">
+                    <label class="col-form-label">Cena</label>
                 </div>
-            </div>*@
+
+            </div>
+            <div class="col-md-5">
+                <input class="form-control" />
+            </div>
+            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+        </div>
+
+
+        <div class="form-group row ">
+            <div class="col-md-5">
+                <div class="text-right">
+                    <label class="col-form-label">Zdjęcie</label>
+                </div>
+
+            </div>
+            <div class="col-md-5">
+                <input type="file" name="files" multiple class="form-control" />
+            </div>
+            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+        </div>
+
+        <div class="form-group row ">
+            <div class="col-md-5">
+                <div class="text-right">
+                    <label class="col-form-label">Opis szczegółowy</label>
+                </div>
+
+            </div>
+            <div class="col-md-5">
+                <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+            </div>
+            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+        </div>
+        <div style="margin:auto;padding:auto;">
+            <button style="width:40%;margin:auto; justify-content: center; display: flex;" type="button" class="btn btn-secondary">Dodaj produkt</button>
+        </div>
+       
+    </div>
+
+
+
+    
+
+    @*<div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_CreateAndBackToListButton" />
+            </div>
+        </div>*@
 
 </form>
 
 
-    @*////////////////////////////////////////////////*@
+@*////////////////////////////////////////////////*@
+
+
 
 <h3 style="text-align:center;font-family:monospace;color:#97734F"><strong>Lista wszytskich produktów</strong></h3>
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+<br />
 <table class="table table-striped border">
     <tr class="table-secondary">
 
@@ -129,13 +146,13 @@
         <th>
             Kategoria
         </th>
-        <th>
+        <th style="width:350px">
             Cena
         </th>
         <th>
 
         </th>
-     
+
 
 
 
@@ -155,12 +172,12 @@
             <div class="btn-group" role="group">
                 <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
 
-                <a class="btn btn-success text-white" asp-action="Details" asp-route-Id="@Model"><i class="fas fa-list-alt"></i></a>
+
 
                 <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
             </div>
         </td>
-        
+
 
 
     </tr>
@@ -175,33 +192,90 @@
             1200
         </td>
         <td style="width:150px">
-             <div class="btn-group" role="group">
-        <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
 
-        <a class="btn btn-success text-white" asp-action="Details" asp-route-Id="@Model"><i class="fas fa-list-alt"></i></a>
 
-        <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt" ></i></a>
-    </div>
+
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
+            </div>
         </td>
-        
+
+
+
+    </tr>
+    <tr>
+        <td>
+            Galaxie Shhesam
+        </td>
+        <td>
+            Stoły
+        </td>
+        <td>
+            5000
+        </td>
+        <td>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+
+
+
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
+            </div>
+        </td>
+
+
+
+    </tr>
+    <tr>
+        <td>
+            Galaxie Shhesam
+        </td>
+        <td>
+            Stoły
+        </td>
+        <td>
+            5000
+        </td>
+        <td>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+
+
+
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
+            </div>
+        </td>
+
+
+
+    </tr>
+    <tr>
+        <td>
+            Galaxie Shhesam
+        </td>
+        <td>
+            Stoły
+        </td>
+        <td>
+            5000
+        </td>
+        <td>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+
+
+
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
+            </div>
+        </td>
+
 
 
     </tr>
 
+
 </table>
 
-    @*<h2>Filterable Table</h2>
-        <p>Type something in the input field to search the table for first names, last names or emails:</p>
-        <input class="form-control" id="myInput" type="text" placeholder="Search..">
-        <script>
-            $(document).ready(function () {
-                $("#myInput").on("keyup", function () {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-        </script>*@
 
 

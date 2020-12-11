@@ -7,32 +7,32 @@ using System.Text;
 
 namespace Services
 {
-	public class ProductService:IProductService
+	public class ProductService:ServiceBase,IProductService
 	{
-		private IRepository<Product> productRepository;
-		public ProductService(IRepository<Product> productRepository)
+		
+		public ProductService(IUnitOfWork unitOfWork):base(unitOfWork)
 		{
-			this.productRepository = productRepository;
+			
 		}
 
 		public void AddProduct(Product product)
 		{
-			productRepository.Create(product);
+			_unitOfWork.ProductRepository.Create(product);
 		}
 
 		public void DeleteProduct(Product product)
 		{
-			productRepository.Delete(product);
+			_unitOfWork.ProductRepository.Delete(product);
 		}
 
 		public IEnumerable<Product> GetProducts()
 		{
-			return productRepository.GetAll();
+			return _unitOfWork.ProductRepository.GetAll();
 		}
 
 		public void UpdateProduct(Product product)
 		{
-			productRepository.Update(product);
+			_unitOfWork.ProductRepository.Update(product);
 		}
 	}
 }
