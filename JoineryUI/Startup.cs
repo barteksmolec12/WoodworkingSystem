@@ -41,7 +41,7 @@ namespace JoineryUI
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			services.AddControllersWithViews();
 			services.AddRazorPages().AddRazorRuntimeCompilation();
-			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddTransient<IProductService, ProductService>();
 
 

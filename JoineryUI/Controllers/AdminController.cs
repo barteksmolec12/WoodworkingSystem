@@ -12,10 +12,10 @@ namespace JoineryUI.Controllers
 {
 	public class AdminController : Controller
 	{
-		private readonly IProductService productService;
-		public AdminController(IProductService productService)
+		private readonly IUnitOfWork _uow;
+		public AdminController(IUnitOfWork unitOfWork)
 		{
-			this.productService= productService;
+			_uow = unitOfWork;
 		}
 
 		public IActionResult Index()
@@ -24,16 +24,8 @@ namespace JoineryUI.Controllers
 		}
 		public IActionResult ShopManagement()
 		{
-			//Product p = new Product();
-			//p.Id = 2;
-			//p.CategoryId = 1;
-			//p.Description = "test";
-			//p.Image = "test123";
-			//p.ProductName = "test";
-			//p.Price = 123;
-			IEnumerable<Product> test;
-			test= productService.GetProducts();
-
+			var test = _uow.ProductRepository.GetAll();
+		
 			return View();
 		}
 

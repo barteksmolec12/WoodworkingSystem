@@ -7,34 +7,34 @@ using System.Text;
 
 namespace Service
 {
-	
-		public class ProductService : IProductService
+
+	public class ProductService : ServiceBase, IProductService
+	{
+
+		public ProductService(IUnitOfWork unitOfWork) : base(unitOfWork)
 		{
-			private IRepository<Product> productRepository;
-			public ProductService(IRepository<Product> productRepository)
-			{
-				this.productRepository = productRepository;
-			}
 
-			public void AddProduct(Product product)
-			{
-				productRepository.Create(product);
-			}
+		}
 
-			public void DeleteProduct(Product product)
-			{
-				productRepository.Delete(product);
-			}
+		public void AddProduct(Product product)
+		{
+			_unitOfWork.ProductRepository.Create(product);
+		}
 
-			public IEnumerable<Product> GetProducts()
-			{
-				return productRepository.GetAll();
-			}
+		public void DeleteProduct(Product product)
+		{
+			_unitOfWork.ProductRepository.Delete(product);
+		}
 
-			public void UpdateProduct(Product product)
-			{
-				productRepository.Update(product);
-			}
+		public IEnumerable<Product> GetProducts()
+		{
+			return _unitOfWork.ProductRepository.GetAll();
+		}
+
+		public void UpdateProduct(Product product)
+		{
+			_unitOfWork.ProductRepository.Update(product);
 		}
 	}
+}
 
