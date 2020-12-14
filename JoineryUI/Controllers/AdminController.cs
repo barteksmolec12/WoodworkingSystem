@@ -22,9 +22,14 @@ namespace JoineryUI.Controllers
 		{
 			return View();
 		}
-		public IActionResult ShopManagement()
+		public async Task <IActionResult> ShopManagement()
 		{
-			var test = _uow.ProductRepository.GetAll();
+			Product p = new Product();
+			p.CategoryId = 1;
+			p.Description = "test";
+			p.Image = "image";
+			p.ProductName = "Drzwi";
+			await _uow.ProductRepository.Create(p);
 		
 			return View();
 		}

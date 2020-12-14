@@ -20,6 +20,7 @@ namespace JoineryUI.Controllers
 
 		public IActionResult Index()
 		{
+			
 			return View();
 		}
 
