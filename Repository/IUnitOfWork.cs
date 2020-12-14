@@ -8,6 +8,8 @@ namespace Repository
 	public interface IUnitOfWork
 	{
 		IRepository<Product> ProductRepository { get; }
+		IRepository<Category> CategoryRepository { get; }
+
 		void Save();
 	}
 }

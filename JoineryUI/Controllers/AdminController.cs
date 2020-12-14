@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
+using JoineryUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Repository;
 using Service;
@@ -13,26 +14,36 @@ namespace JoineryUI.Controllers
 	public class AdminController : Controller
 	{
 		private readonly IUnitOfWork _uow;
+		public ShopManagmentViewModel ShopViewModel { get; set; }
 		public AdminController(IUnitOfWork unitOfWork)
 		{
 			_uow = unitOfWork;
+			ShopViewModel = new ShopManagmentViewModel()
+			{
+				Product = new Product(),
+				AllProducts = new List<Product>()
+			};
 		}
 
 		public IActionResult Index()
 		{
 			return View();
 		}
-		public async Task <IActionResult> ShopManagement()
+		public IActionResult ShopManagement()
 		{
-			Product p = new Product();
-			p.CategoryId = 1;
-			p.Description = "test";
-			p.Image = "image";
-			p.ProductName = "Drzwi";
-			await _uow.ProductRepository.Create(p);
-		
-			return View();
+			
+
+			return View(ShopViewModel);
 		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> AddNewProduct()
+		{
+			
+			await _uow.ProductRepository.Create(ShopViewModel.Product);
+			return RedirectToAction(nameof(ShopManagement));
+		}
+
 
 	}
 }

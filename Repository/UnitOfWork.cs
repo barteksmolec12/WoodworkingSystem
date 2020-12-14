@@ -9,9 +9,12 @@ namespace Repository
 	{
 		private ApplicationDbContext _context;
 		private IRepository<Product> _productRepository;
+		private IRepository<Category> _categoryRepository;
 
 		public IRepository<Product> ProductRepository =>
 			_productRepository ?? (_productRepository = new Repository<Product>(_context));
+		public IRepository<Category> CategoryRepository =>
+			_categoryRepository ?? (_categoryRepository = new Repository<Category>(_context));
 
 		public UnitOfWork(ApplicationDbContext context)
 		{

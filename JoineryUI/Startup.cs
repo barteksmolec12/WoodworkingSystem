@@ -43,6 +43,7 @@ namespace JoineryUI
 			services.AddRazorPages().AddRazorRuntimeCompilation();
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddTransient<IProductService, ProductService>();
+		
 
 
 
