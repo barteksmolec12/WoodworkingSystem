@@ -14,6 +14,8 @@ namespace JoineryUI.Controllers
 	public class AdminController : Controller
 	{
 		private readonly IUnitOfWork _uow;
+
+		[BindProperty]
 		public ShopManagmentViewModel ShopViewModel { get; set; }
 		public AdminController(IUnitOfWork unitOfWork)
 		{
