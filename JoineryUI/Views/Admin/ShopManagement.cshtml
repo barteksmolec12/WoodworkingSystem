@@ -1,7 +1,10 @@
 ﻿@model ShopManagmentViewModel
+@using JoineryUI.Extensions;
+
 @{
     ViewData["Title"] = "ShopManagement";
     Layout = "~/Views/Shared/_LayoutAdminArea.cshtml";
+
 }
 <head>
     <script>
@@ -45,7 +48,7 @@
         <h3 style="font-family: monospace;color:#97734F" class="text-center"><strong>Dodaj nowy produkt</strong></h3>
         <br />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Product.Id"/>
+        <input type="hidden" asp-for="Product.Id" />
         <div class="form-group row ">
             <div class="col-md-5">
                 <div class="text-right">
@@ -57,9 +60,9 @@
                 <input asp-for="Product.ProductName" class="form-control" />
             </div>
         </div>
+        <span asp-validation-for="Product.ProductName" class="text-danger"></span>
 
 
-        @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
 
         <div class="form-group row ">
             <div class="col-md-5">
@@ -69,9 +72,9 @@
 
             </div>
             <div class="col-md-5">
-                <input asp-for="Product.CategoryId" class="form-control" />
+                <select asp-for="Product.CategoryId" id="CategoryId" asp-items="@Model.Categories.ToSelectListItem(Model.Product.CategoryId)" class="form-control"></select>
             </div>
-            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
         </div>
 
 
@@ -85,7 +88,7 @@
             <div class="col-md-5">
                 <input asp-for="Product.Price" class="form-control" />
             </div>
-            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+            <span asp-validation-for="Product.Price" class="text-danger"></span>
         </div>
 
 
@@ -99,7 +102,7 @@
             <div class="col-md-5">
                 <input asp-for="Product.Image" type="file" name="files" multiple class="form-control" />
             </div>
-            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+            <span asp-validation-for="Product.Image" class="text-danger"></span>
         </div>
 
         <div class="form-group row ">
@@ -110,175 +113,111 @@
 
             </div>
             <div class="col-md-5">
-                <textarea  asp-for="Product.Description" class="form-control" id="exampleFormControlTextarea1"></textarea>
+                <textarea asp-for="Product.Description" class="form-control" id="exampleFormControlTextarea1"></textarea>
             </div>
-            @*<span asp-validation-for="MenuItem.Name" class="text-danger"></span>*@
+            <span asp-validation-for="Product.Description" class="text-danger"></span>
         </div>
+
+        @*//////////// button add product ////////////////*@
         <div style="margin:auto;padding:auto;">
-            <button   style="width:40%;margin:auto; justify-content: center; display: flex;" type="submit" class="btn btn-secondary">Dodaj produkt</button>
+            <button style="width:40%;margin:auto; justify-content: center; display: flex;" type="submit" class="btn btn-secondary">Dodaj produkt</button>
         </div>
     </div>
-  
+    @*////////////////////////////////////////////////////*@
 
-
-
-
-
-    @*<div class="form-group row">
-            <div class="col-5 offset-2">
-                <partial name="_CreateAndBackToListButton" />
-            </div>
-        </div>*@
 
 </form>
 
 
-@*////////////////////////////////////////////////*@
+@*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
 
 
 <h3 style="text-align:center;font-family:monospace;color:#97734F"><strong>Lista wszytskich produktów</strong></h3>
 <input class="form-control" id="myInput" type="text" placeholder="Search..">
 <br />
-<table class="table table-striped border">
-    <tr class="table-secondary">
+@*<table class="table table-striped border">
+        <tr class="table-secondary">
 
-        <th style="width:380px">
-            Nazwa produktu
-        </th>
-        <th>
-            Kategoria
-        </th>
-        <th style="width:350px">
-            Cena
-        </th>
-        <th>
+            <th style="width:380px">
+                Nazwa produktu
+            </th>
+            <th>
+                Kategoria
+            </th>
+            <th style="width:350px">
+                Cena
+            </th>
+            <th>
 
-        </th>
-
-
-
-
-    </tr>
-
-    <tr>
-        <td>
-            Galaxie Shhesam
-        </td>
-        <td>
-            Stoły
-        </td>
-        <td>
-            5000
-        </td>
-        <td>
-            <div class="btn-group" role="group">
-                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+            </th>
 
 
 
-                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
-            </div>
-        </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                Galaxie Shhesam
+            </td>
+            <td>
+                Stoły
+            </td>
+            <td>
+                5000
+            </td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
 
 
 
-    </tr>
-    <tr>
-        <td>
-            Modern z dostawką
-        </td>
-        <td>
-            Stoły
-        </td>
-        <td>
-            1200
-        </td>
-        <td style="width:150px">
-            <div class="btn-group" role="group">
-                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </td>
+        </tr>
+
+    </table>*@
+
+<div>
+    @if (Model.AllProducts.Count() > 0)
+    {
+        <table class="table table-striped border">
+
+            <tr class="table-secondary">
+                <th> Nazwa produktu</th>
+                <th> Kategoria</th>
+                <th style="width:350px"> Cena </th>
+                <th></th>
+            </tr>   
 
 
+            @foreach (var item in Model.AllProducts)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Price)
+            </td>
+            <td>
+                <partial name="_TableButtonPartial" model="item.Id" />
+            </td>
+        </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>No category exists...</p>
+    }
+</div>
 
-                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
-            </div>
-        </td>
-
-
-
-    </tr>
-    <tr>
-        <td>
-            Galaxie Shhesam
-        </td>
-        <td>
-            Stoły
-        </td>
-        <td>
-            5000
-        </td>
-        <td>
-            <div class="btn-group" role="group">
-                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
-
-
-
-                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
-            </div>
-        </td>
-
-
-
-    </tr>
-    <tr>
-        <td>
-            Galaxie Shhesam
-        </td>
-        <td>
-            Stoły
-        </td>
-        <td>
-            5000
-        </td>
-        <td>
-            <div class="btn-group" role="group">
-                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
-
-
-
-                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
-            </div>
-        </td>
-
-
-
-    </tr>
-    <tr>
-        <td>
-            Galaxie Shhesam
-        </td>
-        <td>
-            Stoły
-        </td>
-        <td>
-            5000
-        </td>
-        <td>
-            <div class="btn-group" role="group">
-                <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model"><i class="fas fa-edit"></i></a>
-
-
-
-                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model"><i class="fas fa-trash-alt"></i></a>
-            </div>
-        </td>
-
-
-
-    </tr>
-
-
-</table>
 
 
 

@@ -23,10 +23,13 @@ namespace JoineryUI.Controllers
 			ShopViewModel = new ShopManagmentViewModel()
 			{
 				Product = new Product(),
-				AllProducts = new List<Product>(),
+				AllProducts = _uow.ProductRepository.GetAllWithInclude("Category"),
 				Categories = _uow.CategoryRepository.GetAll()
-			
+
+
+
 			};
+			
 		}
 
 		public IActionResult Index()

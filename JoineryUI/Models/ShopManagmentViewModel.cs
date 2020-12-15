@@ -9,7 +9,7 @@ namespace JoineryUI.Models
 	public class ShopManagmentViewModel
 	{
 		public Product Product { get; set; }
-		public List <Product> AllProducts{ get; set; }
+		public IEnumerable <Product> AllProducts{ get; set; }
 		public IEnumerable<Category> Categories { get; set; }
 	}
 }
