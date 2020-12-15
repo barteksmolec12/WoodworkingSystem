@@ -62,17 +62,21 @@ namespace Repository
 
 		}
 
-		public async Task <T> Get(int id)
+		public async Task <T> GetAsync(int id)
 		{
 			return await _set.SingleOrDefaultAsync(x => x.Id == id);
 
 		}
 
-	      public async Task<List<T>> GetAll()
+	      public async Task<List<T>> GetAllAsync()
 		{
 
 			return await _set.ToListAsync();
 		}
+
+		
+
+		
 
 		public async Task<bool> Update(T entity)
 		{
@@ -83,6 +87,11 @@ namespace Repository
 			_set.Update(entity);
 			await _context.SaveChangesAsync();
 			return true;
+		}
+
+		public IEnumerable<T> GetAll()
+		{
+			return _set.AsEnumerable();
 		}
 
 		//Task<T> IRepository<T>.Get(int id)

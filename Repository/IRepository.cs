@@ -8,11 +8,12 @@ namespace Repository
 {
     public interface IRepository<T> where T : BaseEntity
     {   
-        Task <T> Get(int id);
-        Task <List<T>> GetAll();
+        Task <T> GetAsync(int id);
+        Task <List<T>> GetAllAsync();
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
         Task<bool> Delete(int id);
         Task <bool> Create(T entity);
+        public IEnumerable<T> GetAll();
     }
 }
