@@ -15,7 +15,7 @@
     <!-- Custom styles for this template -->
     <link href="/AdminArea/css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+    <link href="~/AdminArea/css/Product.css" rel="stylesheet" />
 </head>
 <style>
     .container {
@@ -34,7 +34,7 @@
             <div class="list-group list-group-flush">
                 <a asp-controller="Admin" asp-action="ShopManagement" class="list-group-item list-group-item-action bg-light">Zarządzanie sklepem &nbsp;<i class="fas fa-shopping-basket"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Lista zamówień &nbsp; <i class="fas fa-chevron-circle-down"></i></i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Kalendarz montaży &nbsp;<i class="far fa-calendar-times"></i></a>
+                <a asp-controller="Scheduler" asp-action="Index"  class="list-group-item list-group-item-action bg-light">Kalendarz montaży &nbsp;<i class="far fa-calendar-times"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Monitoring stanowisk &nbsp;<i class="fas fa-bell"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Stan magazynu &nbsp;<i class="fas fa-battery-half"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Pracownicy&nbsp; <i class="fas fa-user-friends"></i></a>
