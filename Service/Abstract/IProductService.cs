@@ -11,6 +11,7 @@ namespace Service.Abstract
 		Task <List<Product>> GetProductsAsync();
 		Task<bool> AddProduct(Product product);
 		Task<bool> DeleteProduct(Product product);
+		Task<bool> DeleteById(int id);
 		Task<bool> UpdateProduct(Product product);
 		public IEnumerable<Product> GetProducts();
 		public IEnumerable<Product> GetAllWithInclude(string include);

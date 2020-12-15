@@ -16,17 +16,22 @@ namespace Service
 		{
 
 		}
-		
-		public async Task<bool>AddProduct(Product product)
+
+		public async Task<bool> AddProduct(Product product)
 		{
 			await _unitOfWork.ProductRepository.Create(product);
 			return true;
 		}
 
-		public async Task<bool>DeleteProduct(Product product)
+		public async Task<bool> DeleteById(int id)
 		{
-			await _unitOfWork.ProductRepository.Delete(product);
+			await _unitOfWork.ProductRepository.Delete(id);
 			return true;
+		}
+
+		public Task<bool> DeleteProduct(Product product)
+		{
+			throw new NotImplementedException();
 		}
 
 		public IEnumerable<Product> GetAllWithInclude(string include)
@@ -39,7 +44,7 @@ namespace Service
 			return _unitOfWork.ProductRepository.GetAll();
 		}
 
-		public async Task <List<Product>> GetProductsAsync()
+		public async Task<List<Product>> GetProductsAsync()
 		{
 			return await _unitOfWork.ProductRepository.GetAllAsync();
 		}

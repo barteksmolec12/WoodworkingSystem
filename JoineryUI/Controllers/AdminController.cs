@@ -13,21 +13,21 @@ namespace JoineryUI.Controllers
 {
 	public class AdminController : Controller
 	{
-		private readonly IUnitOfWork _uow;
+		private readonly IProductService _productService;
+		private readonly ICategoryService _categoryService;
 
 		[BindProperty]
 		public ShopManagmentViewModel ShopViewModel { get; set; }
-		public AdminController(IUnitOfWork unitOfWork)
+		public AdminController(IProductService productService,ICategoryService categoryService)
 		{
-			_uow = unitOfWork;
+			_productService = productService;
+			_categoryService = categoryService;
+
 			ShopViewModel = new ShopManagmentViewModel()
 			{
 				Product = new Product(),
-				AllProducts = _uow.ProductRepository.GetAllWithInclude("Category"),
-				Categories = _uow.CategoryRepository.GetAll()
-
-
-
+				AllProducts = productService.GetAllWithInclude("Category"),
+				Categories = _categoryService.GetCategories()
 			};
 			
 		}
@@ -46,10 +46,19 @@ namespace JoineryUI.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> AddNewProduct()
 		{
-			
-			await _uow.ProductRepository.Create(ShopViewModel.Product);
+			await _productService.AddProduct(ShopViewModel.Product);
 			return RedirectToAction(nameof(ShopManagement));
 		}
+		[HttpPost]
+		
+		public async Task<IActionResult> DeleteProduct(int id)
+		{
+
+			await _productService.DeleteById(id);
+			return RedirectToAction(nameof(ShopManagement));
+		}
+
+
 
 
 	}
