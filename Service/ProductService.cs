@@ -31,7 +31,7 @@ namespace Service
 
 		public async Task <List<Product>> GetProducts()
 		{
-			return await _unitOfWork.ProductRepository.GetAll();
+			return await _unitOfWork.ProductRepository.GetAllAsync();
 		}
 
 		public async Task<bool> UpdateProduct(Product product)

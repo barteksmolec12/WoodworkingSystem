@@ -10,5 +10,6 @@ namespace JoineryUI.Models
 	{
 		public Product Product { get; set; }
 		public List <Product> AllProducts{ get; set; }
+		public IEnumerable<Category> Categories { get; set; }
 	}
 }
