@@ -15,5 +15,7 @@ namespace Repository
         Task<bool> Delete(int id);
         Task <bool> Create(T entity);
         public IEnumerable<T> GetAll();
+        IEnumerable<T> GetAllWithInclude(string include);
+
     }
 }

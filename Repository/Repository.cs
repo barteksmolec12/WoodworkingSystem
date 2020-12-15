@@ -4,6 +4,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace Repository
 
 
 		}
+		
 		public async Task <bool> Create(T entity)
 		{
 			if (entity == null)
@@ -93,6 +95,17 @@ namespace Repository
 		{
 			return _set.AsEnumerable();
 		}
+
+		public IEnumerable<T> GetAllWithInclude(string include)
+		{
+			var query = _set.AsQueryable();
+			query = query.Include(include);
+			return query;
+		}
+
+
+
+
 
 		//Task<T> IRepository<T>.Get(int id)
 		//{

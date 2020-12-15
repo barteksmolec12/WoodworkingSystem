@@ -16,7 +16,7 @@ namespace Service
 		{
 
 		}
-
+		
 		public async Task<bool>AddProduct(Product product)
 		{
 			await _unitOfWork.ProductRepository.Create(product);
@@ -29,7 +29,17 @@ namespace Service
 			return true;
 		}
 
-		public async Task <List<Product>> GetProducts()
+		public IEnumerable<Product> GetAllWithInclude(string include)
+		{
+			return _unitOfWork.ProductRepository.GetAllWithInclude(include);
+		}
+
+		public IEnumerable<Product> GetProducts()
+		{
+			return _unitOfWork.ProductRepository.GetAll();
+		}
+
+		public async Task <List<Product>> GetProductsAsync()
 		{
 			return await _unitOfWork.ProductRepository.GetAllAsync();
 		}
