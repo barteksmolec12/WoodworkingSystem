@@ -57,7 +57,20 @@ namespace JoineryUI.Controllers
 			await _productService.DeleteById(id);
 			return RedirectToAction(nameof(ShopManagement));
 		}
+		public IActionResult Edit(int id)
+		{
+			var product = _productService.GetAllWithInclude("Category").Where(m => m.Id == id).FirstOrDefault();
+			
+			
+			return View(product);
+		}
+		[HttpPost]
+		public async Task<IActionResult> EditProduct(Product p)
+		{
 
+			await _productService.UpdateProduct(p);
+			return RedirectToAction(nameof(ShopManagement));
+		}
 
 
 
