@@ -37,9 +37,20 @@ namespace JoineryUI
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
 
-			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			services.AddControllersWithViews();
+			services.ConfigureApplicationCookie(options =>
+
+			{
+
+				options.LoginPath = $"/Identity/Account/Login";
+
+				options.LogoutPath = $"/Identity/Account/Logout";
+
+				options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+
+			});
 			services.AddRazorPages().AddRazorRuntimeCompilation();
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddTransient<IProductService, ProductService>();
