@@ -22,5 +22,6 @@ namespace Repository
 		public DbSet<Machine> Machines { get; set; }
 		public DbSet<Woodmaker> Woodmakers { get; set; }
 		public DbSet<ShoppingCartClient> ShoppingCartClients { get; set; }
+		public DbSet<ApplicationUser> ApplicationUser { get; set; }
 	}
 }
