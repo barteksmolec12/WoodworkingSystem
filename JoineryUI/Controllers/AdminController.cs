@@ -32,7 +32,8 @@ namespace JoineryUI.Controllers
 			};
 			
 		}
-		
+		[Authorize(Roles ="Admin")]
+		[Authorize]
 		public IActionResult Index()
 		{
 			return View();
