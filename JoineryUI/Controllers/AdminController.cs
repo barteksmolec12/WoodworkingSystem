@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data;
 using JoineryUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository;
 using Service;
@@ -31,7 +32,7 @@ namespace JoineryUI.Controllers
 			};
 			
 		}
-
+		
 		public IActionResult Index()
 		{
 			return View();
