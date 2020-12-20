@@ -326,6 +326,7 @@
         height: 41px;
         font-weight: 600;
         font-size: 0.8rem;
+        padding-top:9px;
     }
 
     .right-panel .image,
@@ -534,11 +535,10 @@
                         <p>
                             Załóż konto w kilka sekund !
                         </p>
-                        <button  class="btn transparent" id="sign-up-btn">Rejestracja
-                            @*<p>
-                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Rejestracja</a>
-                            </p>*@
-                        </button>
+                       
+                          
+                                <a class="btn transparent"  asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Rejestracja</a>
+                      
                     </div>
                     <img src="img/log.svg" class="image" alt="" />
                 </div>
@@ -546,3 +546,21 @@
             </div>
     </div>
 </body>
+@section Scripts{
+ 
+
+    <script>
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container");
+
+        sign_up_btn.addEventListener("click", () => {
+            container.classList.add("sign-up-mode");
+        });
+
+        sign_in_btn.addEventListener("click", () => {
+            container.classList.remove("sign-up-mode");
+        });
+
+    </script>
+}
