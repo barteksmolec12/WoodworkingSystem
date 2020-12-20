@@ -57,18 +57,22 @@ namespace JoineryUI.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Hasło")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Powtórz hasło")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            [Display(Name = "Imię i nazwisko")]
             public string Name { get; set; }
+            [Display(Name = "Ulica")]
             public string StreetAddress { get; set; }
+            [Display(Name = "Numer telefonu")]
             public string PhoneNumber { get; set; }
+            [Display(Name = "Miejscowość")]
             public string City { get; set; }
-            public string State { get; set; }
+            [Display(Name = "Kod pocztowy")]
             public string PostalCode { get; set; }
         }
 
@@ -92,7 +96,6 @@ namespace JoineryUI.Areas.Identity.Pages.Account
                     Name = Input.Name,
                     City = Input.City,
                     StreetAddress = Input.StreetAddress,
-                    State = Input.State,
                     PostalCode = Input.PostalCode,
                     PhoneNumber = Input.PhoneNumber
                 };
