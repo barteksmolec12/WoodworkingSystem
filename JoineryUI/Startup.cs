@@ -39,6 +39,7 @@ namespace JoineryUI
 
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
+			services.AddSignalR();
 			services.AddControllersWithViews();
 			services.ConfigureApplicationCookie(options =>
 
@@ -55,6 +56,7 @@ namespace JoineryUI
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddTransient<IProductService, ProductService>();
 			services.AddTransient<ICategoryService, CategoryService>();
+		    services.AddTransient<IMachineService, MachineService>();
 
 
 
@@ -88,6 +90,7 @@ namespace JoineryUI
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
+				endpoints.MapHub<SignalrServer>("/signalrServer");
 				endpoints.MapRazorPages();
 			});
 		}

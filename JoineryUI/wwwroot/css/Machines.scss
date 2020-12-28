@@ -1,0 +1,68 @@
+﻿//@import "compass"
+
+$grid-color: #FFEBEE;
+$block-color: #EEFF41;
+
+$gutter: 40px;
+
+//some styling:
+
+body {
+    background-color: #fff;
+    color: #222;
+    padding: 50px 0 0;
+}
+
+.block {
+    background-color: $block-color;
+    display: block;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: $gutter;
+}
+
+//the grid:
+
+.grid {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: $grid-color;
+    //just for styling:
+    padding-top: $gutter;
+}
+
+.gutter {
+    margin-left: ($gutter / 2);
+    margin-right: ($gutter / 2);
+}
+
+.col-33 {
+    width: 33.3%;
+    float: left;
+}
+
+.col-50 {
+    width: 50%;
+    float: left;
+}
+
+.clear {
+    clear: both;
+    display: block;
+}
+
+//responsive
+
+@media all and (max-width:800px) {
+    .col-33 {
+        width: 50%;
+    }
+}
+
+@media all and (max-width:600px) {
+    .col-50, .col-33 {
+        width: 100%;
+        float: none;
+    }
+}

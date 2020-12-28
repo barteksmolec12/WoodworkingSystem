@@ -5210,7 +5210,7 @@
     hr: [],
     h1: [],
     h2: [],
-    h3: [],
+    h5: [],
     h4: [],
     h5: [],
     h6: [],
@@ -6044,7 +6044,7 @@
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
+    template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h5 class="popover-header"></h5>' + '<div class="popover-body"></div></div>'
   });
 
   var DefaultType$5 = _objectSpread({}, Tooltip.DefaultType, {

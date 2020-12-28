@@ -26,7 +26,7 @@
 <form method="post" asp-action="AddNewProduct" enctype="multipart/form-data">
     <br />
     <div class="backgroundWhiteBorder col-md-8">
-        <h3 style="font-family: monospace;color:#97734F" class="text-center"><strong>Dodaj nowy produkt</strong></h3>
+        <h5 style="font-family: monospace;color:#97734F" class="text-center"><strong>Dodaj nowy produkt</strong></h5>
         <br />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Product.Id" />
@@ -114,7 +114,7 @@
 
 
 
-<h3 style="text-align:center;font-family:monospace;color:#97734F"><strong>Lista wszytskich produktów</strong></h3>
+<h5 style="text-align:center;font-family:monospace;color:#97734F"><strong>Lista wszytskich produktów</strong></h5>
 <input class="form-control" id="myInput" type="text" placeholder="Search..">
 <br />
 @*<table class="table table-striped border">

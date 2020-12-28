@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
 namespace JoineryUI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201221212553_AddNameForMachine")]
+    partial class AddNameForMachine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,12 +108,10 @@ namespace JoineryUI.Data.Migrations
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WoodmakerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("WoodmakerId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("WoodmakerId");
 
                     b.ToTable("Machines");
                 });
@@ -460,13 +460,6 @@ namespace JoineryUI.Data.Migrations
                         .HasForeignKey("JoineryOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Data.Machine", b =>
-                {
-                    b.HasOne("Data.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("WoodmakerId");
                 });
 
             modelBuilder.Entity("Data.Product", b =>

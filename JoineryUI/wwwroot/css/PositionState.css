@@ -1,0 +1,79 @@
+﻿
+
+
+.block {
+   
+    display: block;
+   border-radius:3px; 
+  text-align:center;
+   
+}
+
+
+.grid {
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 3%;
+    margin: auto;
+}
+
+
+
+
+.col-33 {
+    
+    width: 23%;
+    float: left;
+    border: 2px solid black;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 1%;
+    height: 350px;
+}
+
+.clear {
+    clear: both;
+    display: block;
+}
+
+
+@media all and (max-width:800px) {
+    .col-33
+
+{
+    width: 50%;
+}
+
+}
+
+@media all and (max-width:600px) {
+    .col-50, .col-33 {
+        width: 100%;
+        float: none;
+    }
+}
+#buttonInBlock:link, #buttonInBlock:visited {
+    background-color: #32CD32;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#buttonInBlock:hover, #buttonInBlock:active {
+    background-color: green;
+}
+
+#buttonBad:link, #buttonBad:visited {
+    background-color: red;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#buttonBad:hover, #buttonBad:active {
+    background-color: red;
+}

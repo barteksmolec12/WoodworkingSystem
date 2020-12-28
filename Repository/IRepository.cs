@@ -11,6 +11,7 @@ namespace Repository
         Task <T> GetAsync(int id);
         Task <List<T>> GetAllAsync();
         Task<bool> Update(T entity);
+        Task<bool> UpdateById(int id);
         Task<bool> Delete(T entity);
         Task<bool> Delete(int id);
         Task <bool> Create(T entity);

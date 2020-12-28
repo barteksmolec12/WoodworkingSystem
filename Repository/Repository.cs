@@ -103,6 +103,20 @@ namespace Repository
 			return query;
 		}
 
+		public async Task<bool> UpdateById(int id)
+		{
+			if (id == 0)
+			{
+				return false;
+
+			}
+			var x = _set.SingleOrDefault(x => x.Id == id);
+
+			_set.Update(x);
+			await _context.SaveChangesAsync();
+			return true;
+		}
+
 
 
 

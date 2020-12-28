@@ -1,5 +1,13 @@
 ﻿<!DOCTYPE html>
+<style>
+    .container {
+        min-width: 100%;
+        marign: 0;
+        padding: 0;
+    }
+</style>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -17,29 +25,23 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="~/AdminArea/css/Product.css" rel="stylesheet" />
 </head>
-<style>
-    .container {
-        min-width: 100%;
-        marign: 0;
-        padding: 0;
-    }
-</style>
+
 <body>
     <div class="d-flex" id="wrapper">
 
-      
+
 
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading"><strong>Panel admin </strong></div>
             <div class="list-group list-group-flush">
                 <a asp-controller="Admin" asp-action="ShopManagement" class="list-group-item list-group-item-action bg-light">Zarządzanie sklepem &nbsp;<i class="fas fa-shopping-basket"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Lista zamówień &nbsp; <i class="fas fa-chevron-circle-down"></i></i></a>
-                <a asp-controller="Scheduler" asp-action="Index"  class="list-group-item list-group-item-action bg-light">Kalendarz montaży &nbsp;<i class="far fa-calendar-times"></i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Monitoring stanowisk &nbsp;<i class="fas fa-bell"></i></a>
+                <a asp-controller="Scheduler" asp-action="Index" class="list-group-item list-group-item-action bg-light">Kalendarz montaży &nbsp;<i class="far fa-calendar-times"></i></a>
+                <a asp-controller="PositionsState" asp-action="Index" class="list-group-item list-group-item-action bg-light">Monitoring stanowisk &nbsp;<i class="fas fa-bell"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Stan magazynu &nbsp;<i class="fas fa-battery-half"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Pracownicy&nbsp; <i class="fas fa-user-friends"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Budżet &nbsp; <i class="far fa-money-bill-alt"></i></a>
-              
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -76,13 +78,15 @@
     <!-- Bootstrap core JavaScript -->
     <script src="/AdminArea/vendor/jquery/jquery.min.js"></script>
     <script src="/AdminArea/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
 
 </body>

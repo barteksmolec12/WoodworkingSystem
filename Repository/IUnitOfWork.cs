@@ -9,6 +9,7 @@ namespace Repository
 	{
 		IRepository<Product> ProductRepository { get; }
 		IRepository<Category> CategoryRepository { get; }
+		IRepository<Machine> MachineRepository { get; }
 
 		void Save();
 	}
