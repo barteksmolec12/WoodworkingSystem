@@ -1,102 +1,91 @@
 ﻿
 
-//$(() => {
-//    LoadProdData();
-//    var connection = new signalR.HubConnectionBuilder().withUrl("/signalrServer").build();
-//    connection.start();
-//    connection.on("LoadProducts", function () {
-//        LoadProdData();
-//        console.log('test czy dziala');
+$(() => {
+    LoadProdData();
+    var connection = new signalR.HubConnectionBuilder().withUrl("/signalrServer").build();
+    connection.start();
+    connection.on("LoadProducts", function () {
+        LoadProdData();
+        LoadProdData();
+        console.log('test czy dziala');
 
-//    })
-//    let elem = 0;
+    })
+    let elem = 0;
 
    
 
-//    LoadProdData();
+    LoadProdData();
     
 
-//    function LoadProdData() {
+    function LoadProdData() {
 
         
-//        var div = '';
+        var div = '';
       
-//        $.ajax(
+        $.ajax(
 
-//            {
+            {
 
-//                url: '/PositionsState/GetMachines',
-//                method: 'GET',
-//                dataType: 'json',
-//                success: (result) => {
+                url: '/PositionsState/GetMachines',
+                method: 'GET',
+                dataType: 'json',
+                success: (result) => {
 
                  
                  
-//                    $.each(result, (k, v) => {
+                    $.each(result, (k, v) => {
 
-//                        //    countArray = result.length;
+                        //    countArray = result.length;
 
-//                        //if (elem <= countArray) {
-//                        if (elem == 0)
-//                        {
-
-
-//                            if (v.state == 'Wolne') {
-
-//                                div += ` 
-//                                           <div class="col-33">
-
-//                                                <div class="block">
-//                                                    <h5 style="color:green;">${v.name}</h5>
-//                                                    <img style="width:90%;border-radius:3px;margin-bottom:6px;" src="${v.image}" alt="Girl in a jacket">
-//                                                        <h5 style="text-align:center;">${v.applicationUser.name}</h5>
-//                                                    <a id="buttonInBlock" href='../PositionsState/ChangeStatusMachine?id=${v.id}' >Zajmij maszynę</a>
-//                                                </div>
-    
-//                                            </div>`
+                        //if (elem <= countArray) {
+                        //if (elem == 0)
+                        //{
 
 
-//                                  }
-//                            else
-//                            {
-//                                div += ` 
-//                                           <div class="col-33">
-
-//                                                <div class="block">
-//                                                    <h5 style="color:green;">${v.name}</h5>
-//                                                    <img style="width:90%;border-radius:3px;margin-bottom:6px;" src="${v.image}" alt="Girl in a jacket">
-//                                                        <h5 style="text-align:center;">${v.applicationUser.name}</h5>
-//                                                    <a id="buttonBad" href='../PositionsState/ChangeStatusMachine?id=${v.id}' >Maszyna zajęta</a>
-//                                                </div>
-    
-//                                            </div>`
+                            if (v.state == 'Zajęte')
+                            {
+                                div += `  <div id="elem"><h5 style="color:black;">${v.name}</h5><img src="${v.image}" alt="MachineBad"><a style="" id="buttonBad"  href='javascript:postMethod(${v.id});'>Zajęte przez <strong>${v.applicationUser.name}</strong></a></div>`
+                            }             
 
 
-//                            }
-//                        }
+                                  
+                            else
+                            {
+                                div += `  <div id="elem"><h5 style="color:black;">${v.name}</h5><img src="${v.image}" alt="Machine"><a style="" id="buttonInBlock"  href='javascript:postMethod(${v.id});'><strong>Zajmij maszynę</strong></a></div>`
+                            }            
+
+
+                            
+                        //}
                        
 
-//                    })
-//                    if (elem < 1) {
-//                        $("#hehe").append(div);
-//                        elem = elem + 1;
-//                    }
-//                },
+                    })
+                    //if (elem < 1) {
+                        $(".auto-grid").append(div);
+                        //elem = elem + 1;
+                      
+                    //}
 
-//                error: (error) => {
-//                    console.log(error)
-//                }
-//            })
-//    }
+                },
+
+                error: (error) => {
+                    console.log(error)
+                }
+                
+            })
+      
+    }
 
 
 
 
-//});
-//function someFunction() {
-//    alert('Mam')
-//}
+});
 
+
+function postMethod(machineId) {
+    $.post("/PositionsState/ChangeStatusMachine", { id: machineId});
+   
+}
 
 
 
