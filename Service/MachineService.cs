@@ -29,6 +29,17 @@ namespace Service
 			return _unitOfWork.MachineRepository.GetAllWithInclude(include);
 		}
 
+		public async Task<Machine> GetMachineById(int id)
+		{
+			return await _unitOfWork.MachineRepository.GetAsync(id);
+		}
+
+		public async Task<bool> UpdateMachine(Machine machine)
+		{
+			await _unitOfWork.MachineRepository.Update(machine);
+			return true;
+		}
+
 		public async Task<bool> UpdateMachineById(int id)
 		{
 			await _unitOfWork.MachineRepository.UpdateById(id);
