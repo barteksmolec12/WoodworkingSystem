@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Service.Abstract;
 using System;
@@ -29,9 +30,25 @@ namespace JoineryUI.Controllers
 			return View();
 		}
 		[HttpPost]
+		[Authorize]
 		public async Task<IActionResult> ChangeStatusMachine(int id)
 		{
-			var machine = await _machineService.UpdateMachineById(id);
+			//znajdz maszyne po ID
+			var m = await _machineService.GetMachineById(id);
+
+			// zmien jej status
+			if(m.State=="Wolne")
+			{
+				m.State = "Zajęte";
+			}
+			else
+			{
+				m.State = "Wolne";
+			}
+					
+
+			//przekaz do UpdateMachine
+			var machine = await _machineService.UpdateMachine(m);
 			await _signalrHub.Clients.All.SendAsync("LoadProducts");
 
 			return RedirectToAction(nameof(Index));
