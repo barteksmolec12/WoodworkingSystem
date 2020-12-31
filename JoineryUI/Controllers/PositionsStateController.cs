@@ -62,6 +62,16 @@ namespace JoineryUI.Controllers
 
 			return RedirectToAction(nameof(Index));
 		}
+		[HttpGet]
+		[Authorize]
+		
+		public IActionResult GetLoggedUser()
+		{
+			var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+			var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+		
+			return Ok(claim.Value);
+		}
 		//[HttpPost, ActionName("Delete")]
 		//[ValidateAntiForgeryToken]
 		//public async Task<IActionResult> DeleteConfirmed(int ProdId)
