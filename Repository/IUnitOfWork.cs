@@ -10,6 +10,7 @@ namespace Repository
 		IRepository<Product> ProductRepository { get; }
 		IRepository<Category> CategoryRepository { get; }
 		IRepository<Machine> MachineRepository { get; }
+		IRepository<Event> EventRepository { get; }
 
 		void Save();
 	}
