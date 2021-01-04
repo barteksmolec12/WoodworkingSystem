@@ -23,5 +23,6 @@ namespace Repository
 		public DbSet<Woodmaker> Woodmakers { get; set; }
 		public DbSet<ShoppingCartClient> ShoppingCartClients { get; set; }
 		public DbSet<ApplicationUser> ApplicationUser { get; set; }
+		public DbSet<Event> Events { get; set; }
 	}
 }
