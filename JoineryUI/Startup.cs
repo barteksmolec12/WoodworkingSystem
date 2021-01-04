@@ -57,6 +57,7 @@ namespace JoineryUI
 			services.AddTransient<IProductService, ProductService>();
 			services.AddTransient<ICategoryService, CategoryService>();
 		    services.AddTransient<IMachineService, MachineService>();
+			services.AddTransient<IEventService, EventService>();
 
 
 
