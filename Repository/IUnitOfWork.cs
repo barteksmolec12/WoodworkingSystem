@@ -11,6 +11,9 @@ namespace Repository
 		IRepository<Category> CategoryRepository { get; }
 		IRepository<Machine> MachineRepository { get; }
 		IRepository<Event> EventRepository { get; }
+		IRepository<Entry> EntryRepository { get; }
+		IRepository<ApplicationUser> UserRepository { get; }
+
 
 		void Save();
 	}

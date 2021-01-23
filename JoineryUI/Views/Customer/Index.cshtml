@@ -1,176 +1,71 @@
-﻿
-@*@{
+﻿@model ShopAreaViewModel
+@{
     ViewData["Title"] = "Index";
-}*@
+}
 <head>
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="/css/site.css" rel="stylesheet" />
+    <link href="~/css/Shop_ProductsList.css" rel="stylesheet" />
 </head>
 
 
-<style>
-    #test:hover {
-        background-color: #D3D3D3;
-        color: black;
-        cursor: pointer;
-        transition-delay:0.1s;
-    }
-</style>
 <div><partial name="_HeaderForCustomerArea.cshtml" /></div>
 
-@*///////////////////////////// kategorie ////////// justify-content: center;display: flex;///////////////////////////////////////*@
+
 <div style="justify-content: center; display: flex;">
     <ul id="menu-filters" style="width:100%; " class="menu-filter-list list-inline text-center">
-
-
-        <li style="padding-left:2%;padding-right:2%;margin-top:1%;" id="test" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Wszystko</li>
-        <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Stoły</li>
-        <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Drzwi wewnętrzne</li>
-        <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Drzwi zewnętrzne</li>
-        <li style="padding-left:2%;padding-right:2%;margin-top:1%;" class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Inne</li>
-       
-
-
+        <li class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Wszystko</li>
+        @foreach (var item in Model.categories)
+        {
+            <li class="filter active btn btn-secondary ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
+        }
 
     </ul>
 </div>
 
 
 
+@foreach (var item in Model.categories)
 
 
-@*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+{
 
-<div class="col-12" style="margin-bottom:15px; margin-top:10px; padding:10px;border:2px solid #97734F;border-radius:5px;">
-    <div class="row">
-        <div class="col-md-3 col-sm-12">
-            <img src="https://www.mason.com.sg/wp-content/uploads/2019/10/premium-suar-wood-dining-table-singapore-11-scaled.jpg" width="99%" style="border-radius:5px;border:2px solid #bbb9b9" />
-        </div>
-        <div class="col-md-9 col-sm-12">
-            <div class="row pr-3">
-                <div class="col-8">
-                    @*<label class="text-primary" style="font-size:21px;color:black">Galaxie Shhesam</label>*@
-                    <h4 style="font-size:21px;color:darkslategrey"><strong>Galaxie Shhesam</strong></h4>
-
-
-
-                </div>
-                <div class="col-4 text-right" style="color:maroon">
-                    <h4 style="color:#97734F">5000 PLN</h4>
-                </div>
-            </div>
-
-
-            <div class="row col-12 text-justify d-none d-md-block">
-                <p>Gruby na prawie 4,5 centymetrów blat stołu wykonany jest z litego drewna Sheesham . Blat został dodatkowo polakierowany aby podkreślić industrialny charakter mebla. Podstawę stołu stanowią cztery krzyżowane ze sobą prawie czarne nogi przypominające litery X połączone ze sobą.</p>
-            </div>
-            <div class="col-md-3 col-sm-12 offset-md-9 text-center">
-
-                <a asp-controller="Customer" asp-action="Details" class="btn btn-success form-control" style="color: white; font-family: Arial">Szczegóły</a>
-
-            </div>
-        </div>
+    <div class="row" id="menu-wrapper">
+        <partial name="_ThumbnailAreaPartial" model="@Model.products.Where(u=>u.Category.Name.Equals(item.Name))" />
     </div>
-</div>
 
-@*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-
-@*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-
-<div class="col-12" style="margin-bottom:15px; margin-top:10px; padding:10px;border:2px solid #97734F;border-radius:5px;">
-    <div class="row">
-        <div class="col-md-3 col-sm-12">
-            <img src="https://www.woodica.pl/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/t/stol_debowy_modern_u_06e_render_5.webp" width="99%" style="border-radius:5px;border:2px solid #bbb9b9" />
-        </div>
-        <div class="col-md-9 col-sm-12">
-            <div class="row pr-3">
-                <div class="col-8">
-                    @*<label class="text-primary" style="font-size:21px;color:black">Galaxie Shhesam</label>*@
-                    <h4 style="font-size:21px;color:darkslategrey"><strong>Modern z dostawką</strong></h4>
+}
 
 
 
-                </div>
-                <div class="col-4 text-right" style="color:maroon">
-                    <h4 style="color:#97734F">1200 PLN</h4>
-                </div>
-            </div>
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
 
+    <script>
 
-            <div class="row col-12 text-justify d-none d-md-block">
-                <p>Oferowane produkty są towarem nowym, pierwszego gatunku, wolnym od wad. Na meble dębowe udzielamy 7-letniej gwarancji dla klientów indywidualnych lub 12-miesięcznej dla klientów instytucjonalnych.</p>
-            </div>
-            <div class="col-md-3 col-sm-12 offset-md-9 text-center">
+    var posts = $('.post');
 
-                <a class="btn btn-success form-control" style="color: white; font-family: Arial">Szczegóły</a>
+    (function ($) {
 
-            </div>
-        </div>
-    </div>
-</div>
-@*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+        $("#menu-filters li").click(function () {
+            
 
-<div class="col-12" style="margin-bottom:15px; margin-top:10px; padding:10px;border:2px solid #97734F;border-radius:5px;">
-    <div class="row">
-        <div class="col-md-3 col-sm-12">
-            <img src="https://e1.meble.pl/gfx/_zdjecia_e1/sklep_oferta/3/350/3350749/bstol_rozkladany_garant_175___index_335787_6244644136.jpg" width="99%" style="border-radius:5px;border:2px solid #bbb9b9" />
-        </div>
-        <div class="col-md-9 col-sm-12">
-            <div class="row pr-3">
-                <div class="col-8">
-                    @*<label class="text-primary" style="font-size:21px;color:black">Galaxie Shhesam</label>*@
-                    <h4 style="font-size:21px;color:darkslategrey"><strong>GARANT 220</strong></h4>
+            var selectedFilter = $(this).data("filter");
+
+            $(".menu-restaurant").fadeOut();
+
+            setTimeout(function () {
+                $(selectedFilter).slideDown();
+            }, 400);
+        });
 
 
 
-                </div>
-                <div class="col-4 text-right" style="color:maroon">
-                    <h4 style="color:#97734F">3800 PLN</h4>
-                </div>
-            </div>
+    })(jQuery);
+
+    </script>
+}
 
 
-            <div class="row col-12 text-justify d-none d-md-block">
-                <p>Wielką zaletą stołu jest możliwość mieszania kolorów (blat, wkładki) na specjalne życzenie klienta (dopłata + 50 zł), dzięki czemu możemy dostosować jego wygląd do indywidualnych potrzeb. Sklep meble.pl zaprasza na zakupy.</p>
-            </div>
-            <div class="col-md-3 col-sm-12 offset-md-9 text-center">
-
-                <a class="btn btn-success form-control" style="color: white; font-family: Arial">Szczegóły</a>
-
-            </div>
-        </div>
-    </div>
-</div>
-@*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-
-<div class="col-12" style="margin-bottom:15px; margin-top:10px; padding:10px;border:2px solid #97734F;border-radius:5px;">
-    <div class="row">
-        <div class="col-md-3 col-sm-12">
-            <img src="https://kludo.pl/114-large_default/stolik-kawowy-erin.jpg" width="99%" style="border-radius:5px;border:2px solid #bbb9b9" />
-        </div>
-        <div class="col-md-9 col-sm-12">
-            <div class="row pr-3">
-                <div class="col-8">
-                    @*<label class="text-primary" style="font-size:21px;color:black">Galaxie Shhesam</label>*@
-                    <h4 style="font-size:21px;color:darkslategrey"><strong>Idustrialny</strong></h4>
-
-
-
-                </div>
-                <div class="col-4 text-right" style="color:maroon">
-                    <h4 style="color:#97734F">1400 PLN</h4>
-                </div>
-            </div>
-
-
-            <div class="row col-12 text-justify d-none d-md-block">
-                <p>Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym.                      Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki.</p>
-            </div>
-            <div class="col-md-3 col-sm-12 offset-md-9 text-center">
-
-                <a class="btn btn-success form-control" style="color: white; font-family: Arial">Szczegóły</a>
-
-            </div>
-        </div>
-    </div>
-</div>

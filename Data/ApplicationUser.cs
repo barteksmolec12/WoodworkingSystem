@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Data
 {
 	public class ApplicationUser : IdentityUser
 	{
+		
 		[Display(Name = "Imię i nazwisko")]
 		public string Name { get; set; }
 		[Display(Name = "Ulica")]
@@ -22,5 +24,6 @@ namespace Data
 		
 		[Display(Name = "Powtórz hasło")]
 		public string ConfirmPassword { get; set; }
+		public long Token { get; set; }
 	}
 }

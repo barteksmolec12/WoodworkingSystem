@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Data
 {
-	public class JoineryOrder:BaseEntity
+	public class JoineryOrder
 	{
-		
+		[Key]
+		public int Id { get; set; }
+
 		[Required]
 		public int UserId { get; set; }
 		[Required]

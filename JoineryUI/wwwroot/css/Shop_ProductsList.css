@@ -1,0 +1,49 @@
+﻿#test:hover {
+    background-color: #D3D3D3;
+    color: black;
+    cursor: pointer;
+    transition-delay: 0.1s;
+}
+
+img {
+    border-radius: 5px;
+    width: 99%;
+    border: 2px solid #bbb9b9
+}
+
+.mainDiv {
+    margin-bottom: 15px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #97734F;
+    border-radius: 5px;
+}
+
+#productName {
+    font-size: 21px;
+    color: darkslategrey
+}
+
+#price {
+    color: #97734F
+}
+
+#buttonDetails {
+    color: white;
+    font-family: Arial
+}
+
+#priceDiv {
+    color: maroon
+}
+
+#categoryName {
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 1%;
+}
+categoryName:hover{
+    cursor:pointer;
+
+}
+

@@ -35,12 +35,12 @@
             <div class="sidebar-heading"><strong>Panel admin </strong></div>
             <div class="list-group list-group-flush">
                 <a asp-controller="Admin" asp-action="ShopManagement" class="list-group-item list-group-item-action bg-light">Zarządzanie sklepem &nbsp;<i class="fas fa-shopping-basket"></i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Lista zamówień &nbsp; <i class="fas fa-chevron-circle-down"></i></i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Lista zamówień &nbsp; <i class="fas fa-chevron-circle-down"></i></a>
                 <a asp-controller="Scheduler" asp-action="Index" class="list-group-item list-group-item-action bg-light">Kalendarz montaży &nbsp;<i class="far fa-calendar-times"></i></a>
                 <a asp-controller="PositionsState" asp-action="Index" class="list-group-item list-group-item-action bg-light">Monitoring stanowisk &nbsp;<i class="fas fa-bell"></i></a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Stan magazynu &nbsp;<i class="fas fa-battery-half"></i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Pracownicy&nbsp; <i class="fas fa-user-friends"></i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Budżet &nbsp; <i class="far fa-money-bill-alt"></i></a>
+                <a asp-controller="Attendance" asp-action="Index" class="list-group-item list-group-item-action bg-light">Ewidencja pracowników&nbsp; <i class="fas fa-user-friends"></i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Statystyki &nbsp; <i class="fas fa-chart-bar"></i></a>
 
             </div>
         </div>
@@ -78,7 +78,10 @@
     <!-- Bootstrap core JavaScript -->
     <script src="/AdminArea/vendor/jquery/jquery.min.js"></script>
     <script src="/AdminArea/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
     <script src="~/js/site.js"></script>
+
     <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
     @RenderSection("Scripts", required: false)
 

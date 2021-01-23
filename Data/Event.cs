@@ -5,9 +5,12 @@ using System.Text;
 
 namespace Data
 {
-	public class Event:BaseEntity
+	public class Event
 	{
-       [Required]
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
         public string Subject { get; set; }
         [Required]
         public string Description { get; set; }

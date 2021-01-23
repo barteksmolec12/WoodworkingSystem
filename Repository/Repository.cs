@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-	public class Repository<T> : IRepository<T> where T : BaseEntity
+	public class Repository<T> : IRepository<T> where T : class
 	{
 		private readonly ApplicationDbContext _context;
 		private DbSet<T> _set;
@@ -56,7 +56,8 @@ namespace Repository
 				return false;
 
 			}
-			var x = _set.SingleOrDefault(x => x.Id == id);
+
+			var x = _set.Find(id);
 
 			_set.Remove(x);
 			await _context.SaveChangesAsync();
@@ -66,7 +67,7 @@ namespace Repository
 
 		public async Task <T> GetAsync(int id)
 		{
-			return await _set.SingleOrDefaultAsync(x => x.Id == id);
+			return await _set.FindAsync(id);
 
 		}
 
@@ -76,9 +77,7 @@ namespace Repository
 			return await _set.ToListAsync();
 		}
 
-		
-
-		
+	
 
 		public async Task<bool> Update(T entity)
 		{
@@ -95,6 +94,7 @@ namespace Repository
 		{
 			return _set.AsEnumerable();
 		}
+		
 
 		public IEnumerable<T> GetAllWithInclude(string include)
 		{
@@ -110,12 +110,16 @@ namespace Repository
 				return false;
 
 			}
-			var x = _set.SingleOrDefault(x => x.Id == id);
+			var x = _set.Find(id);
 
 			_set.Update(x);
 			await _context.SaveChangesAsync();
 			return true;
 		}
+
+	
+
+
 
 
 

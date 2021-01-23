@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : class
     {   
         Task <T> GetAsync(int id);
         Task <List<T>> GetAllAsync();
@@ -16,6 +16,7 @@ namespace Repository
         Task<bool> Delete(int id);
         Task <bool> Create(T entity);
         public IEnumerable<T> GetAll();
+    
         IEnumerable<T> GetAllWithInclude(string include);
 
     }

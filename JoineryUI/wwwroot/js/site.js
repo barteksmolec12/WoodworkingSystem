@@ -2,19 +2,26 @@
 
 $(() => {
     LoadProdData();
+    LoadEntryData();
     var connection = new signalR.HubConnectionBuilder().withUrl("/signalrServer").build();
     connection.start();
     connection.on("LoadProducts", function () {
+        //LoadProdData();
         LoadProdData();
-        LoadProdData();
-        console.log('test czy dziala');
+        console.log('Machines');
 
     })
-    let elem = 0;
-    
-    var doActions= true;
+    connection.on("LoadEntries", function () {
+        //LoadProdData();
+        LoadEntryData();
+        console.log('Entries');
 
-    LoadProdData();
+    })
+    //let elem = 0;
+    
+    //var doActions= true;
+
+    ////LoadProdData();
     
 
     function LoadProdData() {
@@ -88,10 +95,46 @@ $(() => {
       
     }
 
+    function LoadEntryData() {
 
+        var tr = '';
+        $.ajax(
+            {
+
+                url: '/Attendance/GetEntries',
+                method: 'GET',
+                success: (result) => {
+
+                    $.each(result, (k, v) => {
+
+
+                        tr += `
+                        <tr class="tr-shadow">
+
+                            <td>${v.dayOfEntry}</td>
+                            <td> ${v.timeIn}</td>
+                            <td>${v.timeOut}</td>
+                            <td class="desc">${v.applicationUser.name}</td>
+                            <td style="position: relative;"><button type="button" class="btn btn-success">W pracy</button></td>
+
+
+                        </tr>`
+
+
+
+                    })
+                    $("#tableBody").html(tr);
+                },
+                error: (error) => {
+                    console.log(error)
+                }
+            })
+    }
 
 
 });
+
+
 
 
 function postMethod(machineId) {

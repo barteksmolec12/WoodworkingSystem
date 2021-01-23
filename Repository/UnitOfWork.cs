@@ -12,6 +12,10 @@ namespace Repository
 		private IRepository<Category> _categoryRepository;
 		private IRepository<Machine> _machineRepository;
 		private IRepository<Event> _eventRepository;
+		private IRepository<Entry> _entryRepository;
+		private IRepository<ApplicationUser> _userRepository;
+
+
 
 		public IRepository<Product> ProductRepository =>
 			_productRepository ?? (_productRepository = new Repository<Product>(_context));
@@ -22,6 +26,11 @@ namespace Repository
 			_machineRepository ?? (_machineRepository = new Repository<Machine>(_context));
 		public IRepository<Event> EventRepository =>
 			_eventRepository ?? (_eventRepository = new Repository<Event>(_context));
+		public IRepository<Entry> EntryRepository =>
+			_entryRepository ?? (_entryRepository = new Repository<Entry>(_context));
+		public IRepository<ApplicationUser> UserRepository =>
+			_userRepository ?? (_userRepository = new Repository<ApplicationUser>(_context));
+
 		public UnitOfWork(ApplicationDbContext context)
 		{
 			_context = context;

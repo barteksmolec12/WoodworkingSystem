@@ -57,6 +57,7 @@ namespace JoineryUI.Controllers
             else
             
             {
+                v = e;
                 await _eventService.AddEvent(v);
             }
                 

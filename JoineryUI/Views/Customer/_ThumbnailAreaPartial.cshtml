@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Data.Product>
+
+<style>
+    #titleCategory {
+        display: grid;
+        width: 40%;
+        align-items: center;
+        text-align: center;
+        grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+        grid-gap: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        #titleCategory:before,
+        #titleCategory:after {
+            content: '';
+            border-top: 2px solid;
+        }
+</style>
+
+@if (Model.Count() > 0)
+{
+
+<div class="col-12 post @Model.FirstOrDefault().Category.Name.Replace(" ",string.Empty) menu-restaurant">
+
+    <div class="row" style="width:100%;">
+        <h3 id="titleCategory" style="color:#212529;"><strong>@Model.FirstOrDefault().Category.Name.ToUpper()</strong>  </h3>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-12 mainDiv">
+
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <img src="@item.Image" />
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <div class="row pr-3">
+                        <div class="col-8">
+                            <h4 id="productName"><strong>@item.ProductName</strong></h4>
+                        </div>
+                        <div class="col-4 text-right" id="priceDiv">
+                            <h4 id="price">@item.Price PLN</h4>
+                        </div>
+                    </div>
+                    <div class="row col-12 text-justify d-none d-md-block">
+                        <p>@item.Description</p>
+                    </div>
+                    <div class="col-md-3 col-sm-12 offset-md-9 text-center">
+
+                        <a asp-controller="Customer" asp-action="Details" class="btn btn-success form-control" id="buttonDetails">Szczegóły</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+        }

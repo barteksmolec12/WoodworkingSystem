@@ -52,12 +52,23 @@ namespace JoineryUI
 				options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 
 			});
+
+			services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+			{
+				builder.AllowAnyOrigin()
+					   .AllowAnyMethod()
+					   .AllowAnyHeader();
+			}));
 			services.AddRazorPages().AddRazorRuntimeCompilation();
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddTransient<IProductService, ProductService>();
 			services.AddTransient<ICategoryService, CategoryService>();
 		    services.AddTransient<IMachineService, MachineService>();
 			services.AddTransient<IEventService, EventService>();
+			services.AddTransient<IUserService, UserService>();
+			services.AddTransient<IEntryService, EntryService>();
+
+
 
 
 
@@ -71,6 +82,7 @@ namespace JoineryUI
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseDatabaseErrorPage();
+				app.UseCors("MyPolicy");
 			}
 			else
 			{
@@ -85,6 +97,7 @@ namespace JoineryUI
 
 			app.UseAuthentication();
 			app.UseAuthorization();
+			app.UseCors("MyPolicy");
 
 			app.UseEndpoints(endpoints =>
 			{

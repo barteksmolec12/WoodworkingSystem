@@ -35,6 +35,38 @@ namespace JoineryUI.Data.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("Data.Entry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateOfEntry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DayOfEntry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("ExitDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TimeIn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TimeOut")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Entries");
+                });
+
             modelBuilder.Entity("Data.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -482,7 +514,17 @@ namespace JoineryUI.Data.Migrations
                     b.Property<string>("StreetAddress")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("Token")
+                        .HasColumnType("bigint");
+
                     b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Data.Entry", b =>
+                {
+                    b.HasOne("Data.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
                 });
 
             modelBuilder.Entity("Data.JoineryOrderDetails", b =>

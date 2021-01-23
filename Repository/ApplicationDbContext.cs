@@ -24,5 +24,6 @@ namespace Repository
 		public DbSet<ShoppingCartClient> ShoppingCartClients { get; set; }
 		public DbSet<ApplicationUser> ApplicationUser { get; set; }
 		public DbSet<Event> Events { get; set; }
+		public DbSet<Entry> Entries { get; set; }
 	}
 }

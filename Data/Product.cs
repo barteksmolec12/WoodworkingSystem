@@ -6,9 +6,11 @@ using System.Text;
 
 namespace Data
 {
-	public class Product:BaseEntity
-	{
+	public class Product
 
+	{
+		[Key]
+		public int Id { get; set; }
 		[Required]
 		[Display(Name = "Nazwa produktu")]
 		public string ProductName { get; set; }

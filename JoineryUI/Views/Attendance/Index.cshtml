@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminArea.cshtml";
+}
+
+<link href="css/theme.css" rel="stylesheet" media="all">
+<script src="~/js/AttendanceRealTime.js"></script>
+<style>
+    body {
+        background-color: #F5F5F5;
+    }
+</style>
+<br />
+<form>
+    <div class="form-row">
+        <div class="col-7">
+            <h2 style="color:#696969;">Ewidencja pracowników</h2>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-secondary">Dodaj nowego pracownika &nbsp;<i class="fas fa-user-plus"></i></button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-secondary">Zarządzaj &nbsp;<i class="fas fa-users-cog"></i></button>
+        </div>
+    </div>
+</form>
+@*<form>
+        <div class="row">
+            <div class="col">
+                <h2 style="color:#696969;">Ewidencja pracowników</h2>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary">Dodaj nowego pracownika</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary">Dodaj nowego pracownika</button>
+            </div>
+        </div>
+    </form>*@
+<br />
+
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+
+                <th>Dzień</th>
+                <th>Godz.wejścia</th>
+                <th>Godz. wyjścia</th>
+                <th>Pracownik</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            @*<tr class="tr-shadow">
+
+                    <td>Pon 18.01</td>
+                    <td> 8:00</td>
+                    <td>16:07</td>
+                    <td class="desc">Adam Kuś</td>
+                    <td>8h 07</td>
+
+
+                </tr>
+                <tr class="spacer"></tr>
+                <tr class="tr-shadow">
+
+                    <td>Pon 18.01</td>
+                    <td> 8:00</td>
+                    <td>16:07</td>
+                    <td class="desc">Adam Kuś</td>
+                    <td>8h 07</td>
+
+
+                </tr>
+                <tr class="spacer"></tr>
+                <tr class="tr-shadow">
+
+                    <td>Pon 18.01</td>
+                    <td> 8:00</td>
+                    <td>16:07</td>
+                    <td class="desc">Bartek Smolec</td>
+                    <td>8h 07</td>
+
+
+                </tr>
+                <tr class="spacer"></tr>
+                <tr class="tr-shadow">
+
+                    <td>Pon 18.01</td>
+                    <td> 8:00</td>
+                    <td>16:07</td>
+                    <td class="desc">Adam Kuś</td>
+                    <td>8h 07</td>
+
+
+                </tr>*@
+        </tbody>
+    </table>
+</div>
